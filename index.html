@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="form">
+      <div class="mainform">
+        <label for="FirstName">First Name:</label><br />
+        <input type="text" id="FirstName" name="FirstName" /><br />
+        <label for="LastName">Last Name:</label><br />
+        <input type="text" id="LastName" name="LastName" /><br />
+        <button id="Addbtn">Add</button>
+      </div>
+    </div>
+    <div class="table">
+      <table class="main-table">
+        <tr id="table-heading">
+          <th>S No</th>
+          <th>FirstName</th>
+          <th>LastName</th>
+          <th>Action</th>
+        </tr>
+        <tbody id="tablebody"></tbody>
+      </table>
+    </div>
+    <div class="edit-form hide">
+      <div class="mainedit">
+        <form id="updateform">
+          <label for="FirstNameedit">First Name:</label><br />
+          <input type="text" id="FirstNameedit" name="FirstNameedit" /><br />
+          <label for="LastNameedit">Last Name:</label><br />
+          <input type="text" id="LastNameedit" name="LastNameedit" /><br />
+          <button id="upbtn">Update</button>
+        </form>
+      </div>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
+      integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+$(document).ready(function () {
+  let arr = [];
+  let updateindex;
+  if (
+    !$("#myform").validate({
+      rules: {
+        FirstName: "required",
+        LastName: "required",
+      },
+    })
+  ) {
+    $("#Addbtn").click(function () {
+      let arrObj = {
+        fName: $("#FirstName").val(),
+        lName: $("#LastName").val(),
+      };
+      arr.push(arrObj);
+      $("#FirstName").val("");
+      $("#LastName").val("");
+      $("#tablebody").empty();
+      $table();
+    });
+  }
+  $table = function () {
+    for (let i = 0; i < arr.length; i++) {
+      let newRow = $(`<tr>
+      <td>
+        <ol>
+          <li id="tID">${i + 1}</li>
+        </ol>
+      </td>
+      <td id="fName">${arr[i].fName}</td>
+      <td id="lName">${arr[i].lName}</td>
+
+      <td>
+        <button id="editbtn">Edit</button>
+        <button id="dltbtn">delete</button>
+      </td>
+    </tr>`);
+      $("#tablebody").append(newRow);
+    }
+  };
+  $(".main-table").on("click", "#dltbtn", function () {
+    const row = $(this).closest("tr");
+    const index = row.index();
+    arr.splice(index, 1);
+    row.remove();
+  });
+  $(".main-table").on("click", "#editbtn", function () {
+    $(".edit-form").toggleClass("hide");
+    const fNameValue = $(this).closest("tr").find("#fName").text();
+    $("#FirstNameedit").val(fNameValue);
+    const lNameValue = $(this).closest("tr").find("#lName").text();
+    $("#LastNameedit").val(lNameValue);
+    updateindex = $(this).closest("tr").find("#tID").text();
+  });
+  if (
+    !$("#updateform").validate({
+      rules: {
+        FirstNameedit: "required",
+        LastNameedit: "required",
+      },
+    })
+  ) {
+    $("#upbtn").click(function update() {
+      console.log(arr[updateindex - 1]);
+      arr[updateindex - 1].fName = $("#FirstNameedit").val();
+      arr[updateindex - 1].lName = $("#LastNameedit").val();
+      $(".edit-form").addClass("hide");
+      $("#tablebody").empty();
+      $table();
+    });
+  }
+});
